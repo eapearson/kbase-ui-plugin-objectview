@@ -1,0 +1,48 @@
+## ObjectView Plugin
+---
+package:
+    author: Erik Pearson
+    name: objectview
+    description: Router, widget-router, and generic widgets for data objects
+source:
+    modules:
+        #-
+        #    module: kb_objectview_downloadWidget
+        #    file: widgets/download/downloadWidget
+        #    css: true
+    styles:
+        -
+            file: styles
+install:
+    widgets:
+        -
+            # Note: it may seem redundant to name the download widget within
+            # its own directory. It is purely pragmatic. It is easier to manage
+            # widget files with a directory per widget, but when debugging in the
+            # browser it is good to have relatively unique (or rare) filenames.
+            module: widgets/download/downloadWidget
+            stylesheet: true
+            name: kb_objectview_download
+            type: factory
+        -
+            module: widgets/copy/copyWidget
+            stylesheet: true
+            name: kb_objectview_copy
+        -
+            module: widgets/overview/overviewWidget
+            stylesheet: false
+            name: kb_objectview_overview
+        -
+            module: widgets/provenance/provenanceWidget
+            stylesheet: false
+            name: kb_objectview_provenance
+            
+    routes:
+        -
+            path:
+                - objectview
+                - name: workspaceId
+                - name: objectId
+                - name: objectVersion
+                  optional: true
+                  
